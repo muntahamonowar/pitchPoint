@@ -1,0 +1,970 @@
+/* ============================================================
+   PITCHPOINT ADMIN THEME – MATCHED TO style.css
+   ============================================================ */
+
+/* Load custom Atop font used for brand headings */
+@font-face {
+  font-family: "Atop";
+  src: url("../fonts/Atop-R99O3.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Brand variables reused from guest style.css
+   These keep colours & radius consistent across guest + admin */
+:root {
+  --page-bg: #C2E391;
+  --card-bg: #ffffff;
+
+  --brand: #15803d;
+  --brand-hover: #166534;
+
+  --text-main: #000000;
+  --text-muted: rgba(0,0,0,0.7);
+
+  --border-light: rgba(0,0,0,0.12);
+  --border-subtle: rgba(0,0,0,0.10);
+
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  --shadow-soft: 0 12px 30px rgba(0,0,0,0.12);
+  --shadow-card: 0 10px 25px rgba(0,0,0,0.10);
+}
+
+/* ============================================================
+   GLOBAL
+   ============================================================ */
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--text-main);
+  /* Soft gradient background matching guest home page */
+  background: radial-gradient(circle at top left,
+              #d9f3b0 0,
+              var(--page-bg) 38%,
+              #b5d985 100%);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   MAIN GRID LAYOUT: sidebar + main + footer
+   ============================================================ */
+
+.admin-layout {
+  display: grid;
+  /* Sidebar fixed width, main area flexible */
+  grid-template-columns: 260px 1fr;   /* left = sidebar, right = content */
+  /* First row = main content, second row = footer */
+  grid-template-rows: auto auto;      /* row 1 = content, row 2 = footer */
+  min-height: 100vh;
+}
+
+/* Sidebar spans BOTH rows so it continues behind the footer */
+.sidebar {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(8px);
+  border-right: 1px solid var(--border-light);
+  padding: 24px 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* Main content: row 1, right side */
+.main {
+  grid-column: 2;
+  grid-row: 1;
+  padding: 32px;
+}
+
+/* Container card used inside main content */
+.main-inner {
+  background: rgba(255,255,255,0.85);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 32px;
+}
+
+/* ============================================================
+   SIDEBAR BRAND + LINKS
+   ============================================================ */
+
+/* Layout for logo + brand text in sidebar */
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+/* Sidebar logo image (PitchPoint logo) */
+.sidebar-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: none;
+  display: block;
+}
+
+/* Wrapper for brand name + subtitle */
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+/* Main brand title “PitchPoint Admin” */
+.brand-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--brand);
+}
+
+/* Small subtitle under brand name */
+.brand-sub {
+  font-size: 0.85rem;
+  color: var(--brand);
+}
+
+/* Small text showing logged-in admin email/name */
+.admin-info {
+  margin-bottom: 20px;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+/* Navigation area inside sidebar */
+.sidebar nav {
+  margin-top: 14px;
+}
+
+/* Sidebar nav links (Dashboard, Users, Projects, etc.) */
+.sidebar nav a {
+  display: block;
+  padding: 12px 16px;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--text-main);
+  text-decoration: none;           /* no underline */
+}
+
+/* Active link and hover state – green pill background */
+.sidebar nav a[aria-current="page"],
+.sidebar nav a:hover {
+  background: var(--brand);
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* ============================================================
+   PAGE TITLES
+   ============================================================ */
+
+.page-title {
+  font-family: "Atop";
+  font-weight: 400;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+
+/* Wrapper for metric/stat cards (dashboard top) */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 1.4rem;
+  margin-bottom: 1.8rem;
+}
+
+/* Single card styling */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-soft);
+}
+
+/* Card title text */
+.card strong {
+  font-size: 1rem;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* ============================================================
+   TABLES - FIXED FOR CONSISTENT STYLING ACROSS ALL VIEWS
+   ============================================================ */
+
+.table-wrapper {
+  background: rgba(255,255,255,0.9);
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-light);
+  margin-top: 14px;
+  overflow-x: auto; /* allow horizontal scroll on small screens */
+}
+
+/* Ensure ALL tables have consistent styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: var(--radius-lg);
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+/* Apply to ALL table headers */
+thead th {
+  background: #f8fafc;
+  padding: 16px 14px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-bottom: 2px solid var(--border-light);
+  text-align: left;
+  color: var(--text-main);
+}
+
+/* Apply to ALL table cells */
+tbody td {
+  padding: 16px 14px;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 0.92rem;
+  text-align: left;
+}
+
+/* Apply hover effect to ALL table rows */
+tbody tr:hover {
+  background: #f9fafb;
+}
+
+/* Status pill – used for Active/Inactive, etc. */
+.status-pill {
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+  min-width: 80px;
+}
+
+/* Different pill colours for different statuses */
+.status-success { background:#e6f4ea; color:#137333; }
+.status-warning { background:#fff4e5; color:#a66300; }
+.status-danger  { background:#fdecea; color:#ae292b; }
+
+/* Wrapper for multiple buttons in a table cell */
+.table-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Base style for table buttons (e.g. Apply) */
+.btn-table {
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: inherit;
+  font-size: 0.82rem;
+  transition: all 0.2s ease;
+}
+
+/* Hover effect for table buttons */
+.btn-table:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Primary table button (green usually) */
+.btn-table-primary {
+  background: var(--brand);
+  color: #fff;
+}
+
+/* Hover state for primary table button */
+.btn-table-primary:hover {
+  background: var(--brand-hover);
+}
+
+/* Secondary table button (light grey) */
+.btn-table-secondary {
+  background: #f1f5f9;
+  color: var(--text-main);
+  border: 1px solid var(--border-light);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+/* Generic button class used across admin pages */
+.btn {
+  padding: 10px 16px;
+  border-radius: var(--radius-pill);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+/* Generic hover effect for .btn */
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* Black primary button */
+.btn-primary {
+  background: #000;
+  color: #fff;
+}
+
+/* Slightly lighter on hover */
+.btn-primary:hover {
+  background: #222;
+}
+
+/* Green variant button */
+.btn-green {
+  background: var(--brand);
+  color: #fff;
+}
+
+/* Darker green on hover */
+.btn-green:hover {
+  background: var(--brand-hover);
+}
+
+/* Secondary button (white with border) */
+.btn.btn-secondary {
+  background: #fff;
+  color: var(--text-main);
+  border: 1px solid var(--border-light);
+}
+
+/* Inline forms inside tables (like action dropdowns) */
+form.inline {
+  display: inline-block;
+}
+
+
+/* ============================================================
+   FOOTER (inside admin layout, right column only)
+   ============================================================ */
+
+/* Footer grid position in admin layout */
+.admin-footer {
+  grid-column: 2;      /* right side, under main */
+  grid-row: 2;
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* Global footer styling at bottom */
+footer{
+  width:100%;
+  background:#608529;  /* green footer */
+  font-family:"Open Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color:#fff;
+  padding:24px 20px 12px;
+  margin-top:32px;
+  box-sizing:border-box;
+}
+
+/* Center content inside footer */
+.footer-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Footer logo (PitchPoint small icon) */
+.footer-logo {
+  width: 90px;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+  margin-bottom: 12px;
+}
+
+/* Footer heading (PitchPoint brand text) */
+.footer-content h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+/* Small description paragraph in footer */
+.footer-content p {
+  max-width: 500px;
+  margin: 10px auto 0;
+  font-size: 0.9rem;
+}
+
+/* Social icons list */
+.socials {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 0;
+  margin: 10px 0 20px;
+}
+
+/* Individual social icon link as round button */
+.socials li a {
+  width: 40px;
+  height: 40px;
+  background: #333;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 1.2rem;
+  transition: 0.25s ease;
+  text-decoration: none;
+}
+
+/* Specific brand colours for each icon */
+.socials li:nth-child(1) a { background: #1877F2; } /* Facebook */
+.socials li:nth-child(2) a { background: #000;    } /* X/Twitter */
+.socials li:nth-child(3) a { background: #DB4437;} /* Google */
+.socials li:nth-child(4) a { background: #FF0000;} /* YouTube */
+.socials li:nth-child(5) a { background: #0A66C2;} /* LinkedIn */
+
+/* Hover animation for social icons */
+.socials li a:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+/* Bottom-most thin black bar in footer */
+.footer-bottom {
+  background: #000;
+  padding: 12px 0;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.footer-bottom span {
+  text-transform: uppercase;
+  opacity: .7;
+}
+
+/* Email list filter */
+.email-filter-form {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+/* Plain links (no underline, inherit colour) */
+.link-plain {
+  text-decoration: none;
+  color: inherit;
+}
+.link-plain:hover {
+  text-decoration: underline;
+}
+
+/* Back link above the email detail */
+.email-back-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+}
+.email-back-link:hover {
+  text-decoration: underline;
+}
+
+/* Email detail card */
+.email-detail-card {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 18px 40px rgba(15,23,42,.10);
+  padding: 24px 24px 28px;
+  max-width: 900px;
+}
+
+/* Email meta data container (To, From, Subject, Date) */
+.email-meta {
+  margin: 0 0 1.5rem;
+}
+
+/* Grid rows for email meta labels + values */
+.email-meta .meta-row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 0.4rem 1.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.email-meta dt {
+  font-weight: 700;
+}
+
+.email-body-heading {
+  font-family: "Atop", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.3rem;
+  margin: 0 0 .6rem;
+}
+
+/* Wrapper for email body text */
+.email-body-box {
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba(0,0,0,.06);
+}
+
+/* ============================================================
+   FILTERS AND SEARCH STYLES - SEPARATE SEARCH IN RIGHT CORNER
+   ============================================================ */
+
+/* Container holding filters on left + search on right */
+.filters-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+/* Left side main filters card */
+.main-filters {
+    flex: 1;
+    min-width: 400px;
+    background: rgba(255,255,255,0.9);
+    padding: 20px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--border-light);
+}
+
+/* Right side search form pinned to top-right */
+.search-form {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: rgba(255,255,255,0.9);
+    padding: 20px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--border-light);
+    z-index: 10;
+}
+
+/* Input + button row for search bar */
+.search-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Visual style for search text input */
+.search-input {
+    padding: 10px 16px;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-pill);
+    width: 280px;
+    font: inherit;
+    background: #fff;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.2s ease;
+}
+
+/* Focus state highlight for search input */
+.search-input:focus {
+    outline: 2px solid var(--brand);
+    border-color: var(--brand);
+    box-shadow: 0 8px 20px rgba(21, 128, 61, 0.15);
+}
+
+/* Search button styling */
+.search-btn {
+    white-space: nowrap;
+    padding: 10px 20px;
+    background: var(--brand);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-soft);
+}
+
+/* Hover effect for search button */
+.search-btn:hover {
+    background: var(--brand-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Screen-reader-only label helper (visually hidden) */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Form elements styling for dropdowns + text inputs */
+select, input[type="text"] {
+    padding: 10px 14px;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-pill);
+    background: #fff;
+    font: inherit;
+    transition: all 0.2s ease;
+    min-width: 150px;
+}
+
+/* Focus state for filters/input fields */
+select:focus, input[type="text"]:focus {
+    outline: 2px solid var(--brand);
+    border-color: var(--brand);
+}
+
+/* Layout for filter items in a row */
+.filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: end;
+}
+
+/* Single group for label + control */
+.filter-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Label styling above inputs */
+.filter-group label {
+    margin-bottom: 0.25rem;
+    font-weight: bold;
+    color: var(--text-main);
+    font-size: 0.9rem;
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN
+   ============================================================ */
+
+@media (max-width: 1024px) {
+    /* Stack filters vertically on medium screens */
+    .filters-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+    
+    /* Remove absolute position, make search full width */
+    .search-form {
+        position: static;
+        width: 100%;
+    }
+    
+    .search-group {
+        justify-content: flex-start;
+    }
+    
+    .search-input {
+        width: 100%;
+        min-width: auto;
+        flex: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Collapse admin layout into single column (no side-by-side) */
+    .admin-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr auto;
+    }
+    
+    .sidebar {
+        grid-column: 1;
+        grid-row: 1;
+        border-right: none;
+        border-bottom: 1px solid var(--border-light);
+    }
+    
+    .main {
+        grid-column: 1;
+        grid-row: 2;
+        padding: 20px;
+    }
+    
+    .admin-footer {
+        grid-column: 1;
+        grid-row: 3;
+    }
+    
+    .filters-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .main-filters,
+    .search-form {
+        padding: 16px;
+    }
+    
+    .search-form {
+        position: static;
+        width: 100%;
+    }
+    
+    .search-group {
+        justify-content: space-between;
+    }
+    
+    .search-input {
+        width: 100%;
+        min-width: auto;
+        flex: 1;
+    }
+    
+    .filter-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+    
+    .filter-group {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Extra-small devices: tighten spacing */
+    .main {
+        padding: 16px;
+    }
+    
+    .main-inner {
+        padding: 20px;
+    }
+    
+    .table-wrapper {
+        padding: 12px;
+    }
+    
+    thead th,
+    tbody td {
+        padding: 12px 8px;
+        font-size: 0.85rem;
+    }
+    
+    .search-input {
+        min-width: 150px;
+    }
+    
+    .search-group {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+    
+    .search-btn {
+        width: 100%;
+    }
+    
+    .main-filters,
+    .search-form {
+        padding: 12px;
+    }
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+
+/* Quick text alignment helpers */
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+/* Margin top utilities */
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+
+/* Margin bottom utilities */
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+
+/* Hide element helper */
+.hidden {
+    display: none;
+}
+
+/* Loading states - make elements semi-transparent and disable clicks */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Success/error alert boxes */
+.alert {
+    padding: 12px 16px;
+    border-radius: var(--radius-lg);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+/* Green success message box */
+.alert-success {
+    background: #e6f4ea;
+    color: #137333;
+    border: 1px solid #137333;
+}
+
+/* Red error message box */
+.alert-error {
+    background: #fdecea;
+    color: #ae292b;
+    border: 1px solid #ae292b;
+}
+
+/* ============================
+   Email Management styling
+   ============================ */
+
+/* Top actions row above email table (e.g. Compose button) */
+.page-actions {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+}
+
+/* Remove underline from "Compose new email" link/button */
+.page-actions .email-compose-btn {
+  text-decoration: none;
+}
+
+.page-actions .email-compose-btn:hover,
+.page-actions .email-compose-btn:focus {
+  text-decoration: none;
+}
+
+/* Filters row under the page title for emails */
+.filters-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #f7fbe9;
+  border-radius: 999px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.filters-row label {
+  font-weight: 600;
+  margin-right: 0.25rem;
+}
+
+.filters-row select {
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 0.35rem 0.75rem;
+  background-color: #ffffff;
+  font-size: 0.95rem;
+}
+
+/* Email details page card wrapper */
+.email-detail-card {
+  margin-top: 1rem;
+  padding: 1.5rem 1.75rem;
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Grid layout for email meta info (to, from, subject, etc.) */
+.email-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem 2rem;
+  margin-bottom: 1.25rem;
+}
+
+.email-meta .meta-row dt {
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.email-meta .meta-row dd {
+  margin: 0.15rem 0 0;
+}
+
+/* Heading above email body text */
+.email-body-heading {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* Box around email body text */
+.email-body-box {
+  padding: 1rem 1.2rem;
+  border-radius: 16px;
+  background-color: #f9fafb;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  line-height: 1.6;
+}
+
+/* Back link on email detail page (like “← Back to list”) */
+.email-back-link {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0.5rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.email-back-link:hover,
+.email-back-link:focus {
+  text-decoration: underline;
+}
+
+/* Highlight unread rows in email list table */
+.row-unread {
+  background-color: #f4fbdf;
+}

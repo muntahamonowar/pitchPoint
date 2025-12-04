@@ -1,0 +1,301 @@
+/* ============================================================
+   PAYMENT PAGES - COHERENT WITH PITCHPOINT DESIGN
+   ============================================================ */
+
+:root {
+  --page-bg: #7a8c5e;
+  --card-bg: #ffffff;
+  --brand: #15803d;
+  --brand-hover: #166534;
+  --text-main: #000000;
+  --text-muted: rgba(0,0,0,0.7);
+  --border-light: rgba(0,0,0,0.12);
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+  --shadow-card: 0 10px 25px rgba(0,0,0,0.10);
+  --shadow-soft: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  background: radial-gradient(circle at top left, #95aa72 0, var(--page-bg) 38%, #b5d985 100%);
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   CONTAINER (Card)
+   ============================================================ */
+
+.container {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 32px 40px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-card);
+  width: 100%;
+  max-width: 500px;
+  text-align: left;
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+
+h2 {
+  margin: 0 0 24px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+p {
+  margin: 12px 0;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+p strong {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* ============================================================
+   FORMS
+   ============================================================ */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.2);
+  font-size: 0.95rem;
+  background: #fff;
+  font-family: inherit;
+  transition: border-color 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--brand);
+  outline: none;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+button,
+.btn-primary {
+  width: 100%;
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 8px;
+}
+
+button[type="submit"],
+.btn-primary {
+  background: #000;
+  color: #fff;
+}
+
+button[type="submit"]:hover,
+.btn-primary:hover {
+  background: #222;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.22);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* ============================================================
+   SUCCESS STATE
+   ============================================================ */
+
+.container.success {
+  text-align: center;
+}
+
+.container.success h2 {
+  color: var(--brand);
+  font-size: 1.75rem;
+  margin-bottom: 20px;
+}
+
+.container.success p {
+  margin: 10px 0;
+  font-size: 0.95rem;
+}
+
+.container.success a,
+.container.success .btn-primary {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 10px 24px;
+  background: var(--brand);
+  color: #fff;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.container.success a:hover,
+.container.success .btn-primary:hover {
+  background: var(--brand-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(21, 128, 61, 0.3);
+}
+
+/* ============================================================
+   FAILED STATE
+   ============================================================ */
+
+.container.failed {
+  text-align: center;
+}
+
+.container.failed h2 {
+  color: #dc3545;
+  font-size: 1.75rem;
+  margin-bottom: 20px;
+}
+
+.container.failed p {
+  margin: 10px 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.container.failed a,
+.container.failed .btn-primary {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 10px 24px;
+  background: #000;
+  color: #fff;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.container.failed a:hover,
+.container.failed .btn-primary:hover {
+  background: #222;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.22);
+}
+
+/* ============================================================
+   PAYMENT METHOD FIELDS
+   ============================================================ */
+
+#cardFields,
+#bankFields,
+#walletFields,
+#otherFields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+#error {
+  color: #dc3545;
+  font-size: 0.9rem;
+  margin: 8px 0;
+  min-height: 20px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 600px) {
+  body {
+    padding: 16px;
+  }
+
+  .container {
+    padding: 24px 20px;
+    border-radius: 18px;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  button,
+  .btn-primary {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
