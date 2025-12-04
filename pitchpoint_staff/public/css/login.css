@@ -1,0 +1,88 @@
+/* Login page layout (uses base tokens from style.css) */
+
+.login-page {
+  max-width: 1240px;
+  margin: 40px auto 60px;
+  padding: 0 20px;
+}
+
+.login-container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.login-container h1 {
+  margin: 0 0 8px;
+  font-size: 2rem;
+}
+
+.login-subtitle {
+  margin: 0 0 28px;
+  color: var(--text-muted);
+  font-size: 0.98rem;
+}
+
+/* grid of cards */
+.login-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+/* each card */
+.login-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 20px 18px 18px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px rgba(0,0,0,0.18);
+}
+
+/* round icon at top of each card */
+.login-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+/* different colors for each role */
+.login-icon.admin        { background: #000000; }
+.login-icon.staff        { background: #0f766e; }   
+.login-icon.entrepreneur { background: #166534; }   
+.login-icon.investor     { background: #1d4ed8; }   
+
+.login-card h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.login-card p {
+  margin: 0 0 8px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* reuse .btn-primary from style.css */
+.login-card .btn-primary {
+  width: 100%;
+  justify-content: center;
+  margin-top: 4px;
+}

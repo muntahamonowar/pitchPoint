@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd"
+         bootstrap="tests/bootstrap.php"
+         colors="true"
+         verbose="true"
+         stopOnFailure="false"
+         cacheResult="false">
+    <testsuites>
+        <testsuite name="Unit Tests">
+            <directory>tests/Unit</directory>
+            <directory>auth/tests</directory>
+        </testsuite>
+        <testsuite name="Integration Tests">
+            <directory>tests/Integration</directory>
+        </testsuite>
+    </testsuites>
+    
+    <coverage>
+        <include>
+            <directory suffix=".php">auth</directory>
+            <directory suffix=".php">pitchpoint_admin</directory>
+            <directory suffix=".php">pitchpoint_entrepreneur</directory>
+            <directory suffix=".php">pitchpoint_investor</directory>
+            <directory suffix=".php">pitchpoint_staff</directory>
+        </include>
+        <exclude>
+            <directory>vendor</directory>
+            <directory>tests</directory>
+            <directory>uploads</directory>
+            <directory>waf/logs</directory>
+        </exclude>
+    </coverage>
+    
+    <logging>
+        <junit outputFile="tests/logs/junit.xml"/>
+        <testdoxText outputFile="tests/logs/testdox.txt"/>
+        <testdoxHtml outputFile="tests/logs/testdox.html"/>
+    </logging>
+    
+    <php>
+        <ini name="display_errors" value="1"/>
+        <ini name="error_reporting" value="E_ALL"/>
+    </php>
+</phpunit>
+

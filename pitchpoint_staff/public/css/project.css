@@ -1,0 +1,370 @@
+/* FONT: ATOP  */
+@font-face {
+  font-family: "Atop";
+  src: url("../fonts/Atop-R99O3.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 
+   global theme
+    */
+:root {
+  --page-bg: #C2E391;
+  --card-bg: #ffffff;
+
+  --brand: #15803d;
+  --brand-hover: #166534;
+
+  --text-main: #000000;
+  --text-muted: rgba(0,0,0,0.7);
+  --muted: rgba(0,0,0,0.7); /* alias for inline uses in project.php */
+
+  --border-light: rgba(0,0,0,0.12);
+  --border-subtle: rgba(0,0,0,0.10);
+
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 10px 25px rgba(0,0,0,0.10);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top left, #d9f3b0 0, var(--page-bg) 38%, #b5d985 100%);
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+/* 
+   TOPBAR 
+    */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(194,227,145,0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+}
+
+.topbar-row {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Brand */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #000;
+}
+
+.brand span {
+  font-family: "Atop";
+  font-size: 1.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.logo {
+  width: 34px;
+  height: 34px;
+  background: #ffffff;
+  border-radius: 999px;
+  padding: 4px;
+  object-fit: contain;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.16);
+}
+
+/* Small action buttons (Back to home) */
+.actions {
+  margin-left: auto;
+}
+
+.btn-outline.sm,
+.btn-primary.sm {
+  padding: 7px 16px;
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid #000;
+  cursor: pointer;
+  background: transparent;
+  color: #000;
+  transition: 0.2s ease;
+}
+
+.btn-outline.sm:hover {
+  background: #000;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.btn-primary.sm {
+  background: #000;
+  color: #fff;
+}
+
+.btn-primary.sm:hover {
+  background: #222;
+  transform: translateY(-1px);
+}
+
+/* 
+   PROJECT PAGE LAYOUT
+    */
+.project-section {
+  max-width: 900px;
+  margin: 40px auto 60px;
+  padding: 0 20px 40px;
+}
+
+/* main card around the project */
+.project-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-card);
+  padding: 24px 22px 22px;
+}
+
+/* Title & owner line */
+.project-card h1 {
+  margin: 0 0 8px;
+  font-size: 1.7rem;
+}
+
+.project-card > p {
+  margin: 0 0 18px;
+  color: var(--text-muted);
+  font-size: 0.96rem;
+}
+
+/* Sub-sections: Summary / Problem / Solution */
+.desc {
+  margin-top: 16px;
+}
+
+.desc h2 {
+  margin: 0 0 6px;
+  font-size: 1.2rem;
+}
+
+.desc p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+/*  (Stage, Budget, Published) */
+.meta {
+  margin-top: 18px;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+.meta p {
+  margin: 2px 0;
+}
+
+/* CTA panel (sign up/login) */
+.cta-panel {
+  margin-top: 24px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: #f1f5e5;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.cta-panel h3 {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+}
+
+.cta-panel p {
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* buttons inside CTA */
+.cta-panel .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.btn-primary,
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* main CTA (Sign up) */
+.btn-primary {
+  background: #000;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #222;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+}
+
+/* secondary CTA (Login) */
+.btn {
+  background: #fff;
+  border: 1px solid #000;
+  color: #000;
+}
+
+.btn:hover {
+  background: #000;
+  color: #fff;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+}
+
+/* 
+   FOOTER 
+  */
+.site-footer {
+  background: #cbe7a8;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  padding: 16px 0;
+  margin-top: 30px;
+}
+
+.footer-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.9rem;
+}
+
+.footer-inner nav a {
+  margin-left: 14px;
+  font-weight: 500;
+}
+footer {
+  background: #cbe7a8;
+  margin-top: 40px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  padding-top: 30px;
+  text-align: center;
+}
+
+.footer-content img {
+  width: 100px;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.footer-content h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+/* Social Icons */
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.socials li a {
+  width: 40px;
+  height: 40px;
+  background: #333;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 1.2rem;
+  transition: 0.25s ease;
+}
+
+/* Brand colors */
+.socials li:nth-child(1) a { background: #1877F2; } /* Facebook */
+.socials li:nth-child(2) a { background: #000; }    /* X/Twitter */
+.socials li:nth-child(3) a { background: #DB4437; } /* Google */
+.socials li:nth-child(4) a { background: #FF0000; } /* YouTube */
+.socials li:nth-child(5) a { background: #0A66C2; } /* LinkedIn */
+
+.socials li a:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+.footer-bottom {
+  background: #b6d68e;
+  padding: 14px 0;
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+
+/* 
+   RESPONSIVE
+   */
+@media (max-width: 768px) {
+  .topbar-row {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .actions {
+    margin-left: 0;
+  }
+
+  .project-section {
+    margin-top: 24px;
+  }
+
+  .project-card {
+    padding: 20px 18px 18px;
+  }
+}

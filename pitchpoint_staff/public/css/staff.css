@@ -1,0 +1,309 @@
+/* 
+   STAFF DASHBOARD – 
+   */
+
+/* Basic reset for staff pages */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --page-bg: #C2E391;
+  --card-bg: #ffffff;
+
+  --brand: #15803d;
+  --brand-hover: #166534;
+
+  --text-main: #000000;
+  --text-muted: rgba(0, 0, 0, 0.7);
+
+  --border-light: rgba(0, 0, 0, 0.12);
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Same background vibe as guest */
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top left, #d9f3b0 0, var(--page-bg) 38%, #b5d985 100%);
+  color: var(--text-main);
+}
+
+/* 
+   TOP BAR MERGE:
+ 
+   */
+
+/* Pull the *second* header up on top of the first one */
+.topbar:nth-of-type(2) {
+  position: relative;
+  top: -64px;          
+  height: 0;           /* don't create extra vertical space */
+  overflow: visible;   /* but let its contents show */
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* The row inside the second header sits in the same width
+   container as the first header and is pushed to the right */
+.topbar:nth-of-type(2) .topbar-row {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 10px 22px 0 22px;   /* slight top padding to center vertically */
+  display: flex;
+  justify-content: flex-end;   /* move staff-right to the right */
+  align-items: center;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Staff label + logout */
+.staff-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* "PitchPoint Staff" text */
+.staff-role {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/*  outline button styling for Logout */
+.btn-outline {
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  background: #ffffff;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.btn-outline.sm {
+  padding: 6px 18px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.btn-outline.sm:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* On very small screens, let it drop below instead of overlapping */
+@media (max-width: 720px) {
+  .topbar:nth-of-type(2) {
+    top: 0;
+    height: auto;
+  }
+
+  .topbar:nth-of-type(2) .topbar-row {
+    justify-content: flex-start;
+    padding-bottom: 10px;
+  }
+}
+
+/* 
+   Main section – Project Reviews
+    */
+
+.project-section {
+  max-width: 1120px;
+  margin: 28px auto 60px;
+  padding: 0 20px 40px;
+}
+
+/* "Project Reviews" title */
+.project-section > h1 {
+  margin: 0 0 10px;
+  font-size: 1.7rem;
+}
+
+/* 
+   Status tabs – Pending / Published / Rejected / Archived
+    */
+
+.status-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 0 18px;
+}
+
+.status-tabs a {
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  background: rgba(255, 255, 255, 0.92);
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+}
+
+/* PHP adds class="active" */
+.status-tabs a.active {
+  background: #000;
+  color: #fff;
+}
+
+/* 
+   Table – list of projects
+    */
+
+.project-section table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border-light);
+}
+
+/* header row */
+.project-section thead {
+  background: #f1f5f9;
+}
+
+.project-section th,
+.project-section td {
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  text-align: left;
+}
+
+.project-section th {
+  font-weight: 600;
+}
+
+/* zebra rows */
+.project-section tbody tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+/* last row border removal */
+.project-section tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* "No projects to review." row */
+.project-section td[colspan="7"] {
+  text-align: center;
+  padding: 22px 12px;
+  color: var(--text-muted);
+}
+
+/* 
+   Action link – Review
+    */
+
+.project-section td a {
+  display: inline-flex;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  background: #000;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.project-section td a:hover {
+  background: #222;
+}
+
+/* 
+   Responsive
+    */
+
+@media (max-width: 800px) {
+  .project-section {
+    padding: 0 14px 30px;
+  }
+
+  .project-section table {
+    font-size: 0.85rem;
+  }
+  /*  Staff footer*/
+
+footer {
+  background: #111;
+  color: #fff;
+  margin-top: 60px;
+  font-family: inherit;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 0 20px;
+}
+
+.footer-content img {
+  margin-bottom: 10px;
+}
+
+.footer-content h3 {
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+.footer-content p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  max-width: 600px;
+  margin: 10px auto 0;
+}
+
+/* Social icons */
+.socials {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin: 15px 0;
+  padding: 0;
+}
+
+.socials li a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #fff;
+  transition: 0.2s ease;
+}
+
+.socials li a:hover {
+  transform: translateY(-2px);
+}
+
+/* Bottom strip */
+.footer-bottom {
+  padding: 10px 0 15px;
+  text-align: center;
+  background: #000;
+  font-size: 0.85rem;
+}
+
+.footer-bottom span {
+  font-weight: 600;
+}
+
+}
