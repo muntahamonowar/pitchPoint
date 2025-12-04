@@ -1,0 +1,178 @@
+/* CSS Variables */
+:root {
+  --text-muted: rgba(0,0,0,0.7);
+  --border-light: rgba(0,0,0,0.12);
+  --radius-lg: 20px;
+  --shadow-card: 0 10px 25px rgba(0,0,0,0.10);
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+  background: radial-gradient(circle at top left, #95aa72 0, #7a8c5e 38%, #b5d985 100%);
+  min-height: 100vh;
+}
+
+/* Chooser section */
+.chooser {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.chooser h1 {
+  margin: 0 0 8px;
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.chooser .muted {
+  margin: 0 0 40px;
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+/* Cards grid */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+/* Each card */
+.card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 32px 24px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px rgba(0,0,0,0.18);
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.card p {
+  margin: 0 0 16px;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.card .actions {
+  margin-top: auto;
+  width: 100%;
+}
+
+.card .btn {
+  display: inline-block;
+  padding: 10px 24px;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  width: 100%;
+  text-align: center;
+}
+
+.card .btn:hover {
+  background: #222;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.22);
+}
+
+/* Footer */
+footer {
+  background: #cbe7a8;
+  margin-top: 60px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  padding-top: 30px;
+  text-align: center;
+}
+
+.footer-content img {
+  width: 100px;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.footer-content h3 {
+  font-size: 1.3rem;
+  margin: 16px 0 10px;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 0;
+  list-style: none;
+  margin: 20px 0;
+}
+
+.socials li a {
+  width: 40px;
+  height: 40px;
+  background: #333;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 1.2rem;
+  transition: 0.25s ease;
+  text-decoration: none;
+}
+
+.socials li:nth-child(1) a { background: #1877F2; }
+.socials li:nth-child(2) a { background: #000; }
+.socials li:nth-child(3) a { background: #DB4437; }
+.socials li:nth-child(4) a { background: #FF0000; }
+.socials li:nth-child(5) a { background: #0A66C2; }
+
+.socials li a:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+.footer-content p {
+  margin: 16px 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.footer-bottom {
+  background: #b6d68e;
+  padding: 14px 0;
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 0.9rem;
+}

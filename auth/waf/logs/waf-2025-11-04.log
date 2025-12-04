@@ -1,0 +1,5 @@
+[2025-11-04T09:41:48+01:00] BLOCK [SQL_INJECTION] key=username pattern=(drop\s+table) value=test'); DROP TABLE users;--
+[2025-11-04T09:43:34+01:00] BLOCK [SQL_INJECTION] key=id pattern=(select\s+\*\s+from) value=1;select * from users
+[2025-11-04T09:43:40+01:00] BLOCK [XSS] key=comment pattern=(<script.*?>) value=<script>alert(1)</script>
+[2025-11-04T09:43:44+01:00] BLOCK [FILE_INJECTION] key=img pattern=(base64,) value=data:image/svg xml;base64,PHN2Zy8 
+[2025-11-04T11:30:50+01:00] BLOCK [SQL_INJECTION] key=username pattern=(drop\s+table) value=test'); DROP TABLE users;--

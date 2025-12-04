@@ -1,0 +1,1 @@
+[2025-11-23T16:05:49+01:00] BLOCK [SQL_INJECTION] key=q pattern=(information_schema) value=information_schema

@@ -1,0 +1,1 @@
+[2025-11-24T14:19:57+01:00] BLOCK [XSS] key=q pattern=(<script.*?>) value=<script>

@@ -1,0 +1,2 @@
+[2025-11-07T13:06:06+01:00] BLOCK [SQL_INJECTION] key=id pattern=(select\s+\*\s+from) value=1;select * from users
+[2025-11-07T13:13:18+01:00] BLOCK [XSS] key=comment pattern=(<script.*?>) value=<script>alert(1)</script>

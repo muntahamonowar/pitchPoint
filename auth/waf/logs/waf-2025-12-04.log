@@ -1,0 +1,1 @@
+[2025-12-04T18:08:53+01:00] BLOCK [COMMAND_INJECTION] key=q pattern=(cmd=) value=cmd=

@@ -1,0 +1,1 @@
+[2025-11-05T10:39:19+01:00] BLOCK [XSS] key=comment pattern=(<script.*?>) value=<script>alert(1)</script>

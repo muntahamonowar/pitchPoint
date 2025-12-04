@@ -1,0 +1,7 @@
+[2025-11-21T10:34:42+01:00] BLOCK [XSS] key=password pattern=(<script.*?>) value=<script>
+[2025-11-21T15:23:10+01:00] BLOCK [XSS] key=q pattern=(<script.*?>) value=<script>
+[2025-11-21T15:23:28+01:00] BLOCK [SQL_INJECTION] key=q pattern=(drop\s+table) value=DROP TABLE
+[2025-11-21T15:29:33+01:00] BLOCK [SQL_INJECTION] key=q pattern=(drop\s+table) value=DROP TABLE
+[2025-11-21T15:30:00+01:00] BLOCK [COMMAND_INJECTION] key=q pattern=(cmd=) value=cmd=
+[2025-11-21T18:32:00+01:00] BLOCK [XSS] key=password pattern=(<script.*?>) value=<script>
+[2025-11-21T18:43:48+01:00] BLOCK [XSS] key=password pattern=(<script.*?>) value=<script>

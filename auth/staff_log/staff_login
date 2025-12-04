@@ -1,0 +1,5 @@
+[2025-11-23T12:59:22+01:00] LOGIN [Success] staff_id=1 email=omor1@gmail.com ip=::1 user_agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Sa
+[2025-11-26T11:29:07+01:00] LOGIN [Success] staff_id=1 email=omor1@gmail.com ip=::1 user_agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Sa
+[2025-11-26T11:34:29+01:00] LOGOUT [Success] staff_id=1 email=omor1@gmail.com ip=::1 user_agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Sa
+[2025-12-04T17:58:46+01:00] LOGIN [Success] staff_id=1 email=omor1@gmail.com ip=::1 user_agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Sa
+[2025-12-04T17:59:08+01:00] LOGOUT [Success] staff_id=1 email=omor1@gmail.com ip=::1 user_agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Sa
