@@ -1,0 +1,399 @@
+:root {
+  /* Core theme colors + shared rounding value */
+  --green:#037a5a;
+  --ink:#0b0d0e;
+  --text:#111315;
+  --muted:#5f6b76;
+  --line:#e7ebef;
+  --bg:#C2E391;
+  --card:#fafcff;
+  --radius:14px;
+}
+
+/* Global reset */
+* { box-sizing:border-box; }
+html,body { margin:0; padding:0; }
+/* Remove underline from all links */
+a {
+  text-decoration: none;
+  color: inherit; /* keep your design consistent */
+}
+
+/* Optional: Hover effect */
+a:hover {
+  text-decoration: underline; /* or change color instead */
+  color: var(--green);
+}
+
+
+/* Global typography + background theme */
+body {
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* Page structure container */
+.container {
+  max-width:1100px;
+  margin:28px auto;
+  padding:0 18px;
+}
+
+/* Headings + muted text */
+.page-title { margin:0 0 14px 0; font-weight:700; }
+.muted { color:var(--muted); }
+
+/* ======= STICKY NAVIGATION BAR (UPDATED) ======= */
+.topnav {
+  position:sticky;
+  top:0;
+  z-index:50;
+  display:flex;
+  align-items:center;
+  padding:12px 18px;
+  background:#fff;
+  border-bottom:1px solid var(--line);
+}
+
+/* Brand: logo + name on the left */
+.topnav .brand {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:700;
+  font-size:1.1rem;
+  text-decoration:none;
+  color:var(--text);
+  padding:0;
+  border-radius:0;
+}
+
+/* Round logo */
+.brand-logo {
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+/* Optional, if you want to style the text separately */
+.brand-name {
+  letter-spacing:0.02em;
+}
+
+/* Center nav links */
+.nav-links {
+  flex:1;
+  display:flex;
+  justify-content:center;
+  gap:22px;
+}
+
+/* Right side (Logout / Login / Signup) */
+.right-links {
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+/* General nav link styling */
+.topnav a {
+  color:var(--text);
+  text-decoration:none;
+  padding:6px 8px;
+  border-radius:8px;
+}
+
+.topnav a:hover { background:#f3f6f9; }
+
+/* Active nav item */
+.topnav a.active {
+  background:var(--green);
+  color:#fff;
+}
+
+/* Legacy helpers (still safe to keep) */
+.topnav .spacer { flex:1; }
+.dot { color:#47525e; }
+
+/* Flash message system */
+.flash-wrap { padding:8px 18px; }
+.flash {
+  margin:8px auto;
+  max-width:1100px;
+  border:1px solid var(--line);
+  padding:10px 12px;
+  border-radius:10px;
+  background:var(--card);
+}
+.flash.success { border-color:#cfe8d8; }
+.flash.error { border-color:#f3c4c4; }
+
+/* Buttons */
+.btn {
+  display:inline-block;
+  padding:10px 14px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#fff;
+  text-decoration:none;
+  color:var(--text);
+}
+.btn:hover { background:#f8fafc; }
+.btn-primary {
+  background:var(--green);
+  border-color:transparent;
+  color:#fff;
+}
+.btn-primary:hover { background:var(--green-2); }
+
+/* Cards for dashboard listings */
+.cards {
+  list-style:none;
+  padding:0; margin:0;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:16px;
+}
+.card {
+  background:var(--card);
+  border:1px solid var(--line);
+  padding:14px;
+  border-radius:var(--radius);
+}
+.card h3 { margin:0 0 8px 0; }
+.card-summary { color:var(--muted); margin:0 0 8px; }
+.meta { display:flex; gap:10px; color:var(--muted); font-size:12px; }
+
+/* Form layout */
+.form .grid {
+  display:grid;
+  gap:12px;
+  grid-template-columns:1fr;
+}
+label { display:grid; gap:6px; }
+input,select,textarea {
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:10px 12px;
+  font:inherit;
+  background:#fff;
+  color:var(--text);
+}
+textarea { resize:vertical; }
+.actions { display:flex; gap:10px; margin-top:12px; }
+
+/* Data table */
+.table {
+  width:100%;
+  border-collapse:collapse;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  overflow:hidden;
+}
+.table th,.table td {
+  border-bottom:1px solid var(--line);
+  padding:12px 10px;
+  text-align:left;
+}
+.table tr:last-child td { border-bottom:none; }
+
+/* Project detail content */
+.project h1 { margin-bottom:4px; }
+.file-list { list-style:square; padding-left:20px; }
+
+/* Footer: full-width with brand gradient */
+footer {
+  background:linear-gradient(135deg,#1f4037,#99f2c8);
+  width:100vw;
+  height:auto;
+  padding-top:40px;
+  color:#fff;
+  /* Note: Positioned absolute — adjust later when layout finalizes */
+  /* position:absolute; */
+}
+
+/* Footer layout + central alignment */
+.footer-content {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+  position: relative;
+}
+.footer-content h3 {
+  font-size:1.8rem;
+  font-weight:400;
+  text-transform:capitalize;
+  line-height:3rem;
+}
+.footer-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.footer-content p {
+  max-width:500px;
+  margin:10px auto;
+  line-height:28px;
+  font-size:14px;
+}
+
+/* Social icon row */
+.socials {
+  list-style:none;
+  display:flex;
+  margin:1rem 0 3rem 0;
+  position: center;
+}
+.socials li { margin:0 10px; }
+.socials a {
+  text-decoration:none;
+  color:#fff;
+}
+.socials a i {
+  font-size:1.1rem;
+  transition:color .4s ease;
+}
+.socials a:hover i { color:peachpuff; }
+
+/* Footer bottom strip */
+.footer-bottom {
+  background:#000;
+  width:100vw;
+  padding:20px 0;
+  text-align:center;
+}
+.footer-bottom p {
+  font-size:14px;
+  word-spacing:2px;
+  text-transform:capitalize;
+  margin:0;
+}
+.footer-bottom span {
+  text-transform:uppercase;
+  opacity:.4;
+  font-weight:200;
+}
+
+/* Profile page split layout */
+.profile-layout {
+  max-width:1100px;
+  margin:0 auto 40px;
+  display:flex;
+  gap:32px;
+  align-items:flex-start;
+}
+
+/* Left card */
+.profile-card {
+  flex:0 0 320px;
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:20px 22px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.04);
+}
+
+/* Right card */
+.profile-edit {
+  flex:1;
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:20px 22px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.04);
+}
+
+.profile-avatar {
+  display:flex;
+  justify-content:center;
+  margin-bottom:18px;
+}
+
+/* Avatar preview or fallback circle */
+.profile-avatar img,
+.avatar-placeholder {
+  width:120px !important;
+  height:120px !important;
+  border-radius:50%;
+  object-fit:cover;
+  display:block;
+  background:#e3edf3;
+}
+.avatar-placeholder {
+  display:flex;
+  align-items:left;
+  justify-content:center;
+  font-size:40px;
+  font-weight:600;
+  color:#47525e;
+}
+
+/* Wider screens: 2-column form */
+@media (min-width:800px) {
+  .form .grid {
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+/* Add Project (+) Button Styling */
+.add-project-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  background: var(--green);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 24px;
+  text-decoration: none;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.add-project-btn:hover {
+  background: #02634a;
+  transform: scale(1.08);
+}
+
+.add-project-btn i {
+  pointer-events: none;
+}
+
+/* === Responsive navigation === */
+@media (max-width: 980px) {
+  .topnav {
+    flex-wrap: wrap;           /* allow items to go onto new lines */
+    row-gap: 8px;
+  }
+
+  /* Brand goes on its own row, centered */
+  .topnav .brand {
+    flex: 0 0 100%;
+    justify-content: center;
+  }
+
+  /* Center menu links, allow them to wrap nicely */
+  .nav-links {
+    flex: 0 0 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 16px;            /* tighter gap for small screens */
+  }
+
+  /* Right side (Logout) moves to its own row and centers */
+  .right-links {
+    flex: 0 0 100%;
+    justify-content: center;
+  }
+
+  /* Slightly smaller nav text on small screens */
+  .topnav a {
+    font-size: 0.9rem;
+  }
+}
